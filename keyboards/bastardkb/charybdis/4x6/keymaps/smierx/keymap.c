@@ -145,92 +145,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    switch (get_highest_layer(state)) {
-        case BASE:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_TURQUOISE);
-            break;
-        case SPECIAL:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_BLUE);  
-            break;
-        case MOUSE:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_ORANGE);
-            break;
-        case FKEYS:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GOLD);
-            break;
-        case MEDIA:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GREEN);  
-            break;
-        case SPECIAL2:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_WHITE);
-            break;
-        case NUMBERS:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GREEN);  
-            break;
-        case QWERTY:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GREEN);  
-            break;
-        case 8:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_YELLOW);
-            break;
-        case 9:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_AZURE);
-            break;
-        case 10:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_RED);
-            break;
-        case 11:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GREEN);  
-            break;
-        case 12:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GREEN);  
-            break;
-        case 13:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_GREEN);  
-            break;
-        case 14:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_RED);
-            break;
-        case 15:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_PURPLE);
-            break;
-        default:
-            rgb_matrix_mode(RGB_MATRIX_SOLID_COLOR);
-            rgb_matrix_sethsv(HSV_WHITE);  // weiß
-            break;
-    }
-    return state;
-}
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT(
-  // ╭──────────────────────────────														────────────────────────╮ ╭───────────────────────────────────────────────                                     ───────╮
+  // ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮ ╭───────────────────────────────────────────────                                     ───────╮
        KC_NO,KC_NO,	            KC_NO, 		        KC_NO, 		        KC_NO, 	 	        KC_NO, 						TG(15),TG(14),     		KC_NO,            KC_NO,  		    KC_NO,  			DPI_MOD,
-  // ├──────────────────────────────														────────────────────────┤ ├───────────────────────────────────────────────                                     ───────┤
-       KC_NO,KC_Q,    			KC_W,    			KC_F,    			KC_P,    			KC_B,                       KC_J, KC_L,    			KC_U,    		  DE_Y,    			KC_NO,		DPI_RMOD,
-  // ├──────────────────────────────														────────────────────────┤ ├───────────────────────────────────────────────                                     ───────┤
-       KC_NO,MT(MOD_LSFT,KC_A), MT(MOD_LALT,KC_R), 	MT(MOD_LGUI,KC_S), 	MT(MOD_LCTL,KC_T),  KC_G,                       KC_M, MT(MOD_RCTL,KC_N),MT(MOD_RGUI,KC_E),MT(MOD_RALT,KC_I),MT(MOD_RSFT,KC_O), 	KC_NO,
-  // ├──────────────────────────────														────────────────────────┤ ├───────────────────────────────────────────────                                     ───────┤
-       KC_NO,DE_Z,    			 LT(8,KC_X),    			 LT(9,KC_C),    			 LT(10,KC_D),    			KC_V,                       KC_K, LT(13,KC_H), 			LT(12,KC_COMM),  		  LT(11,KC_DOT), 			KC_NO, 		KC_NO,
-  // ╰───────────────────────────────      													────────────────────── ─┤ ├───────────────────────────────────────────────                                     ───────╯
+  // ├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ ├───────────────────────────────────────────────                                     ───────┤
+       KC_NO,KC_Q,    			KC_W,    			KC_F,    			KC_P,    			KC_B,                       KC_J,  KC_L,    		KC_U,    		  DE_Y,    			KC_NO,		DPI_RMOD,
+  // ├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ ├───────────────────────────────────────────────                                     ───────┤
+       KC_NO,MT(MOD_LSFT,KC_A), MT(MOD_LALT,KC_R), 	MT(MOD_LGUI,KC_S), 	MT(MOD_LCTL,KC_T),  KC_G,                       KC_M,  MT(MOD_RCTL,KC_N),MT(MOD_RGUI,KC_E),MT(MOD_RALT,KC_I),MT(MOD_RSFT,KC_O), 	KC_NO,
+  // ├──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ ├───────────────────────────────────────────────                                     ───────┤
+       KC_NO,DE_Z,    			LT(8,KC_X),    		LT(9,KC_C),    		LT(10,KC_D),    	KC_V,                       KC_K,  LT(13,KC_H), 			LT(12,KC_COMM),  		  LT(11,KC_DOT), 			KC_NO, 		KC_NO,
+  // ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────┤ ├───────────────────────────────────────────────                                     ───────╯
                                 									   				KC_DEL, KC_NO,            KC_NO,    KC_NO,  KC_SPC,
                                           											LT(SPECIAL,KC_ENT), MO(MOUSE),      LT(SPECIAL2,KC_BSPC)
   //                            												   ╰───────────     ────────────────╯ ╰─────────────   ─────╯
@@ -287,11 +214,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                  // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
                       KC_NO, KC_NO,KC_NO,KC_NO, 	   KC_NO, 	  KC_NO, 	KC_NO,KC_NO, 	         KC_NO,KC_NO,KC_NO,KC_NO,
                  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-                      KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO, 	KC_NO,LSFT(KC_4),      RALT(KC_E),KC_CIRC,KC_NO,KC_NO,
+                      KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO, 	KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
                  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                       KC_NO, KC_NO, DE_HASH, DE_AT, DE_AMPR, DE_PERC, KC_NO,
                  // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-                      KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
+                      KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,    KC_NO,LSFT(KC_4),      RALT(KC_E),KC_CIRC,KC_NO,KC_NO,
                  // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                                          KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,
                                                               KC_NO, KC_NO,    KC_NO
@@ -301,11 +228,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
                        KC_NO, KC_NO,KC_NO,KC_NO, 	   KC_NO, 	  KC_NO, 	KC_NO,KC_NO, 	         KC_NO,KC_NO,KC_NO,KC_NO,
                   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-                       KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO, 	KC_NO,KC_EQL,      KC_NO,KC_NO,KC_NO,KC_NO,
+                       KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO, 	KC_NO,KC_NO,      KC_NO,KC_NO,KC_NO,KC_NO,
                   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
                        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                       KC_NO, KC_NO, DE_COLN, DE_SCLN, DE_PLUS , DE_ASTR, KC_NO,
                   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-                       KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
+                       KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,    KC_NO,LSFT(KC_0),KC_NO,KC_NO,KC_NO,KC_NO,
                   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                                           KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,
                                                                KC_NO, KC_NO,    KC_NO
@@ -343,11 +270,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
              KC_NO, KC_NO,KC_NO,KC_NO, 	   KC_NO, 	  KC_NO, 	KC_NO,KC_NO, 	         KC_NO,KC_NO,KC_NO,KC_NO,
         // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-             KC_NO, KC_NO,KC_NO,DE_TILD,DE_PIPE,KC_NO, 	KC_NO,KC_NO,      KC_NO,KC_NO,KC_NO,KC_NO,
+             KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO, 	KC_NO,KC_NO,      KC_NO,KC_NO,KC_NO,KC_NO,
         // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
              KC_NO, DE_QUOT, DE_DQUO, DE_BSLS, DE_SLSH,                       KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
         // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-             KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
+             KC_NO, KC_NO,KC_NO,KC_NO,DE_TILD,DE_PIPE,    KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
         // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                                 KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,
                                                      KC_NO, KC_NO,    KC_NO
@@ -357,11 +284,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
          // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
               KC_NO, KC_NO,KC_NO,KC_NO, 	   KC_NO, 	  KC_NO, 	KC_NO,KC_NO, 	         KC_NO,KC_NO,KC_NO,KC_NO,
          // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-              KC_NO, DE_RABK, RALT(KC_0),RALT(KC_9),LSFT(KC_9),KC_NO, 	KC_NO,KC_NO,      KC_NO,KC_NO,KC_NO,KC_NO,
+              KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO, 	KC_NO,KC_NO,      KC_NO,KC_NO,KC_NO,KC_NO,
          // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
               KC_NO, DE_LABK, RALT(KC_7),RALT(KC_8),LSFT(KC_8),                      KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
          // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-              KC_NO, KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
+              KC_NO, DE_RABK, RALT(KC_0),RALT(KC_9),LSFT(KC_9),KC_NO,    KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,KC_NO,
          // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                                  KC_NO,KC_NO,KC_NO,    KC_NO,KC_NO,
                                                       KC_NO, KC_NO,    KC_NO
@@ -397,3 +324,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                     )
 };
 // clang-format on
+
