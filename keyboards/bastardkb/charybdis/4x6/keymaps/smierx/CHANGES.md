@@ -91,3 +91,35 @@ Die HRM-Modifier auf A/R/S/T sind im Base-Layer als `MT()`-Keys definiert. Mit `
 | ⌥⇧ + ← / → | Wort-Selektion (macOS) |
 
 Die expliziten `LCTL()`-Keycodes in Row 4 sind Windows-Boni für schnellen Zugriff ohne Modifier-Kombination.
+
+---
+
+## 2026-06-17
+
+### Layer-Renumerierung (9/10/11 entfernt)
+
+Die leeren Layer 9, 10 und 11 wurden gelöscht, alle darüberliegenden rücken auf:
+
+| Alt | Neu | Layer |
+|-----|-----|-------|
+| 12 | 9 | Selector |
+| 13 | 10 | Media |
+| 14 | 11 | F-Tasten |
+| 15 | 12 | Maus (`MO`) |
+| 16 | 13 | Mac-Overlay (`TG`) |
+| 17 | 14 | Unicode (`TG`) |
+| 18 | 15 | LaTeX (`TG`) |
+
+Höchster Layer ist jetzt 15 → `LAYER_STATE_32BIT` aus `config.h` entfernt (nicht mehr nötig). Alle `TO()/TG()/MO()`-Referenzen im Selector und in den Defines (`CK_17 = MO(12)`) sowie der Base-Zugang (`TO(9)`) wurden mitgezogen.
+
+### Bug-Fixes
+
+- **Layer 14 & 15 (Unicode/LaTeX) hatten keinen Ausgang** – beide Layer sind fast vollständig belegt, dadurch war der Selector verdeckt und es gab kein `TO(0)`/`TG()`. Einmal aktiviert kam man nur per Neustart raus. Fix: `TO(0)` auf den linken Daumen (erste Daumentaste) gelegt.
+- **`TO(1)` aus dem Selector entfernt** – Layer 1 (Navigation) ist ein Momentary-Layer (`LT(1,ENT)`) und hatte über `TO(1)` keinen Rückweg (Escape-Position = `KC_END`). `TO(1)` durch `KC_NO` ersetzt.
+
+### Cleanup
+
+- **Tap Dance komplett entfernt** – `TAP_DANCE_ENABLE`, alle 20 `TD_*`-Actions, `dance_open/close_bracket`, die Structs und Forward-Declarations waren toter Code (kein `TD()` wurde irgendwo benutzt). Spart Firmware-Größe.
+- Ungenutztes `enum charybdis_keymap_layers` entfernt.
+
+Kompiliert sauber (`qmk compile -kb bastardkb/charybdis/4x6/v2/splinky_3 -km smierx`), Overlayer-Tests grün.
